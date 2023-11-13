@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
 
 interface Hero {
@@ -15,6 +16,8 @@ interface Hero {
   styleUrl: './hero-list.component.css',
 })
 export class HeroListComponent {
+  constructor(public router: Router) {}
+
   heroes = [
     { number: 11, name: 'Mr. Nice' },
     { number: 12, name: 'Narco' },

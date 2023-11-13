@@ -15,5 +15,7 @@
 
 @if (selectedHero) {
 <div class="title">{{ selectedHero.name | uppercase }} is my hero</div>
-<app-styled-button>Details</app-styled-button>
+<app-styled-button (click)="router.navigate(['heroes', selectedHero.number])">
+  Details
+</app-styled-button>
 }
