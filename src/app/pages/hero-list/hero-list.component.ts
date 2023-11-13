@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+interface Hero {
+  number: number;
+  name: string;
+}
+
 @Component({
   selector: 'app-hero-list',
   standalone: true,
@@ -22,9 +27,9 @@ export class HeroListComponent {
     { number: 20, name: 'Tornado' },
   ];
 
-  selectedHero: null | { number: number; name: string } = null;
+  selectedHero: null | Hero = null;
 
-  onClickHero(hero: { number: number; name: string }) {
+  onClickHero(hero: Hero) {
     this.selectedHero = hero;
   }
 }
