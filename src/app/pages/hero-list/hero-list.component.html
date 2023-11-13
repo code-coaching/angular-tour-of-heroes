@@ -2,14 +2,18 @@
 
 <div class="hero-list">
   @for (hero of heroes; track hero.number) {
-    <div
-      class="hero"
-      (click)="onClickHero(hero)"
-    >
-      <span class="hero-number">{{ hero.number }}</span>
-      <span class="hero-name">{{ hero.name }}</span>
-    </div>
+  <div
+    class="hero"
+    [ngClass]="{ 'hero--active': hero.number === selectedHero?.number }"
+    (click)="onClickHero(hero)"
+  >
+    <span class="hero-number">{{ hero.number }}</span>
+    <span class="hero-name">{{ hero.name }}</span>
+  </div>
   }
 </div>
 
-<div>{{ selectedHero | json }}</div>
+@if (selectedHero) {
+<div class="title">{{ selectedHero.name }} is my hero</div>
+<button>Details</button>
+}

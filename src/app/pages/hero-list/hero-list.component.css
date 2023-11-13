@@ -26,6 +26,11 @@
   color: white;
   margin-left: 0.25rem;
 }
+.hero--active {
+  background-color: #cfd8dc;
+  color: white;
+  margin-left: 0.25rem;
+}
 
 .hero-number {
   display: flex;
