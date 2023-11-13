@@ -1,8 +1,8 @@
 <div class="layout-container">
   <div class="title">Tour of Heroes</div>
   <div class="button-container">
-    <button (click)="router.navigate([''])">Dashboard</button>
-    <button (click)="router.navigate(['heroes'])">Heroes</button>
+    <app-styled-button (click)="router.navigate([''])">Dashboard</app-styled-button>
+    <app-styled-button (click)="router.navigate(['heroes'])">Heroes</app-styled-button>
   </div>
 
   <router-outlet></router-outlet>
