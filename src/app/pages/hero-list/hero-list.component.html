@@ -14,6 +14,6 @@
 </div>
 
 @if (selectedHero) {
-<div class="title">{{ selectedHero.name }} is my hero</div>
+<div class="title">{{ selectedHero.name | uppercase }} is my hero</div>
 <button>Details</button>
 }
