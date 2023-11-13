@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
 
 interface Hero {
   number: number;
@@ -9,7 +10,7 @@ interface Hero {
 @Component({
   selector: 'app-hero-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, StyledButtonComponent],
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.css',
 })
