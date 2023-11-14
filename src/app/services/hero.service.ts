@@ -21,4 +21,8 @@ export class HeroService {
     { number: 19, name: 'Magma' },
     { number: 20, name: 'Tornado' },
   ];
+
+  topHeroes() {
+    return this.heroes.slice(-4);
+  }
 }
