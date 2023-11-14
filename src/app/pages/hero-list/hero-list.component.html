@@ -1,7 +1,7 @@
 <div class="title">My Heroes</div>
 
 <div class="hero-list">
-  @for (hero of heroes; track hero.number) {
+  @for (hero of heroService.heroes; track hero.number) {
   <div
     class="hero"
     [ngClass]="{ 'hero--active': hero.number === selectedHero?.number }"
