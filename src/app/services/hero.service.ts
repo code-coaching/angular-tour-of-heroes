@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Hero } from '../components/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
   constructor() {}
+
+  selectedHero: null | Hero = null;
 
   heroes = [
     { number: 11, name: 'Mr. Nice' },

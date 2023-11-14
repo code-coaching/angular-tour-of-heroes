@@ -4,7 +4,9 @@
   @for (hero of heroService.heroes; track hero.number) {
   <div
     class="hero"
-    [ngClass]="{ 'hero--active': hero.number === selectedHero?.number }"
+    [ngClass]="{
+      'hero--active': hero.number === heroService.selectedHero?.number
+    }"
     (click)="onClickHero(hero)"
   >
     <span class="hero-number">{{ hero.number }}</span>
@@ -13,9 +15,13 @@
   }
 </div>
 
-@if (selectedHero) {
-<div class="title">{{ selectedHero.name | uppercase }} is my hero</div>
-<app-styled-button (click)="router.navigate(['heroes', selectedHero.number])">
+@if (heroService.selectedHero) {
+<div class="title">
+  {{ heroService.selectedHero.name | uppercase }} is my hero
+</div>
+<app-styled-button
+  (click)="router.navigate(['heroes', heroService.selectedHero.number])"
+>
   Details
 </app-styled-button>
 }

@@ -15,9 +15,7 @@ import { HeroService } from '../../services/hero.service';
 export class HeroListComponent {
   constructor(public router: Router, public heroService: HeroService) {}
 
-  selectedHero: null | Hero = null;
-
   onClickHero(hero: Hero) {
-    this.selectedHero = hero;
+    this.heroService.selectedHero = hero;
   }
 }
