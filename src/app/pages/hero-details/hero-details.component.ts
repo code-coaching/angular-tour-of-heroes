@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../components/models';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
 
@@ -26,7 +26,7 @@ export class HeroDetailsComponent implements OnInit {
     { number: 20, name: 'Tornado' },
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, public router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
