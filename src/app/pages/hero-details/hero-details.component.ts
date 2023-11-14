@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../components/models';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-details',
   standalone: true,
-  imports: [CommonModule, StyledButtonComponent],
+  imports: [CommonModule, StyledButtonComponent, FormsModule],
   templateUrl: './hero-details.component.html',
   styleUrl: './hero-details.component.css',
 })
