@@ -2,11 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
-
-interface Hero {
-  number: number;
-  name: string;
-}
+import { Hero } from '../../components/models';
 
 @Component({
   selector: 'app-hero-list',
