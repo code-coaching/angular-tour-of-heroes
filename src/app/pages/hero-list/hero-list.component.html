@@ -2,26 +2,26 @@
 
 <div class="hero-list">
   @for (hero of heroService.heroes; track hero.number) {
-  <div
-    class="hero"
-    [ngClass]="{
-      'hero--active': hero.number === heroService.selectedHero?.number
-    }"
-    (click)="onClickHero(hero)"
-  >
-    <span class="hero-number">{{ hero.number }}</span>
-    <span class="hero-name">{{ hero.name }}</span>
-  </div>
+    <div
+      class="hero"
+      [ngClass]="{
+        'hero--active': hero.number === heroService.selectedHero?.number
+      }"
+      (click)="onClickHero(hero)"
+    >
+      <span class="hero-number">{{ hero.number }}</span>
+      <span class="hero-name">{{ hero.name }}</span>
+    </div>
   }
 </div>
 
 @if (heroService.selectedHero) {
-<div class="title">
-  {{ heroService.selectedHero.name | uppercase }} is my hero
-</div>
-<app-styled-button
-  (click)="router.navigate(['heroes', heroService.selectedHero.number])"
->
-  Details
-</app-styled-button>
+  <div class="title">
+    {{ heroService.selectedHero.name | uppercase }} is my hero
+  </div>
+  <app-styled-button
+    (click)="router.navigate(['heroes', heroService.selectedHero.number])"
+  >
+    Details
+  </app-styled-button>
 }
