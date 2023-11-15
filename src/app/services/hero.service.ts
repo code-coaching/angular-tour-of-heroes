@@ -37,4 +37,11 @@ export class HeroService {
       this.heroes[index] = structuredClone(hero);
     }
   }
+
+  deleteHero(hero: Hero) {
+    this.heroes = this.heroes.filter((h) => h.number !== hero.number);
+    if (this.selectedHero?.number === hero.number) {
+      this.selectedHero = null;
+    }
+  }
 }

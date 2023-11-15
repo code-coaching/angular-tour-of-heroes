@@ -19,9 +19,16 @@
   <div class="title">
     {{ heroService.selectedHero.name | uppercase }} is my hero
   </div>
-  <app-styled-button
-    (click)="router.navigate(['heroes', heroService.selectedHero.number])"
-  >
-    Details
-  </app-styled-button>
+  <div class="buttons">
+    <app-styled-button
+      (click)="router.navigate(['heroes', heroService.selectedHero.number])"
+    >
+      Details
+    </app-styled-button>
+    <app-styled-button
+      (click)="heroService.deleteHero(heroService.selectedHero)"
+    >
+      Delete
+    </app-styled-button>
+  </div>
 }
