@@ -25,4 +25,16 @@ export class HeroService {
   topHeroes() {
     return this.heroes.slice(-4);
   }
+
+  findHero(number: number): Hero | undefined {
+    const matchingHero = this.heroes.find((h) => h.number === number);
+    return structuredClone(matchingHero);
+  }
+
+  updateHero(hero: Hero) {
+    const index = this.heroes.findIndex((h) => h.number === hero.number);
+    if (index !== -1) {
+      this.heroes[index] = structuredClone(hero);
+    }
+  }
 }

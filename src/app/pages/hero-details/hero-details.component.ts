@@ -14,24 +14,19 @@ import { HeroService } from '../../services/hero.service';
   styleUrl: './hero-details.component.css',
 })
 export class HeroDetailsComponent implements OnInit {
-  hero: null | Hero = null;
+  hero: undefined | Hero;
 
   constructor(
     private route: ActivatedRoute,
     public location: Location,
-    private heroService: HeroService
+    public heroService: HeroService
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const id = +params['id'];
       if (id) {
-        const matchingHero = this.heroService.heroes.find(
-          (h) => h.number === id
-        );
-        if (matchingHero) {
-          this.hero = matchingHero;
-        }
+        this.hero = this.heroService.findHero(id);
       }
     });
   }
