@@ -1,3 +1,9 @@
-<button (click)="click.emit()">
+<button
+  [ngClass]="{
+    primary: type === 'primary',
+    negative: type === 'negative'
+  }"
+  (click)="click.emit()"
+>
   <ng-content></ng-content>
 </button>

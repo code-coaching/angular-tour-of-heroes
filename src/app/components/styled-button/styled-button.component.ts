@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-styled-button',
@@ -10,4 +10,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class StyledButtonComponent {
   @Output() click = new EventEmitter<void>();
+  @Input() type: 'default' | 'primary' | 'negative' = 'default';
 }

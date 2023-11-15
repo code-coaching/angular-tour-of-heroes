@@ -6,10 +6,10 @@
 
   <div class="buttons">
     <app-styled-button (click)="location.back()">Back</app-styled-button>
-    <app-styled-button (click)="heroService.updateHero(hero)">
+    <app-styled-button [type]="'primary'" (click)="heroService.updateHero(hero)">
       Save
     </app-styled-button>
-    <app-styled-button (click)="heroService.deleteHero(hero)">
+    <app-styled-button [type]="'negative'" (click)="heroService.deleteHero(hero)">
       Delete
     </app-styled-button>
   </div>
