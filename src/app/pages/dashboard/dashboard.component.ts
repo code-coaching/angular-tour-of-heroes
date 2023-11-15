@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HeroService } from '../../services/hero.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,5 +11,5 @@ import { HeroService } from '../../services/hero.service';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  constructor(public heroService: HeroService) {}
+  constructor(public heroService: HeroService, public router: Router) {}
 }

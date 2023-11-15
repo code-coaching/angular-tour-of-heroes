@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Hero } from '../../components/models';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
 import { HeroService } from '../../services/hero.service';
@@ -18,7 +18,7 @@ export class HeroDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public router: Router,
+    public location: Location,
     private heroService: HeroService
   ) {}
 

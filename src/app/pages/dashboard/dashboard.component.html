@@ -2,6 +2,8 @@
 
 <div class="top-heroes">
   @for(hero of heroService.topHeroes(); track hero.number) {
-  <div class="top-hero">{{ hero.name }}</div>
+  <div class="top-hero" (click)="router.navigate(['heroes', hero.number])">
+    {{ hero.name }}
+  </div>
   }
 </div>
