@@ -19,7 +19,7 @@ export class HeroDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public location: Location,
-    public heroService: HeroService
+    private heroService: HeroService
   ) {}
 
   ngOnInit() {
@@ -29,5 +29,15 @@ export class HeroDetailsComponent implements OnInit {
         this.hero = this.heroService.findHero(id);
       }
     });
+  }
+
+  saveHero(hero: Hero) {
+    this.heroService.updateHero(hero);
+    this.location.back()
+  }
+
+  deleteHero(hero: Hero) {
+    this.heroService.deleteHero(hero);
+    this.location.back()
   }
 }
