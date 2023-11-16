@@ -51,3 +51,8 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.new-hero-button {
+  display: block;
+  margin-top: 1rem;
+}

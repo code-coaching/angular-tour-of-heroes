@@ -15,6 +15,14 @@
   }
 </div>
 
+<app-styled-button
+  class="new-hero-button"
+  [type]="'primary'"
+  (click)="router.navigate(['heroes/add'])"
+>
+  New
+</app-styled-button>
+
 @if (heroService.selectedHero) {
   <div class="title">
     {{ heroService.selectedHero.name | uppercase }} is my hero
