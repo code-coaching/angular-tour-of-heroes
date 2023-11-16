@@ -10,21 +10,28 @@ export const routes: Routes = [
         path: '',
         loadComponent: () =>
           import('./pages/dashboard/dashboard.component').then(
-            (c) => c.DashboardComponent
+            (c) => c.DashboardComponent,
           ),
       },
       {
         path: 'heroes',
         loadComponent: () =>
           import('./pages/hero-list/hero-list.component').then(
-            (c) => c.HeroListComponent
+            (c) => c.HeroListComponent,
+          ),
+      },
+      {
+        path: 'heroes/add',
+        loadComponent: () =>
+          import('./pages/hero-add/hero-add.component').then(
+            (c) => c.HeroAddComponent,
           ),
       },
       {
         path: 'heroes/:id',
         loadComponent: () =>
           import('./pages/hero-details/hero-details.component').then(
-            (c) => c.HeroDetailsComponent
+            (c) => c.HeroDetailsComponent,
           ),
       },
     ],

@@ -1,0 +1,10 @@
+<div class="title">Add hero</div>
+
+<div>name: <input [(ngModel)]="name" /></div>
+
+<div class="buttons">
+  <app-styled-button (click)="location.back()">Back</app-styled-button>
+  <app-styled-button [type]="'primary'" (click)="saveHero(name)">
+    Save
+  </app-styled-button>
+</div>
