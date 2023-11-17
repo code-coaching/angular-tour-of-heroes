@@ -48,8 +48,6 @@ export class HeroService {
   addHero(name: string) {
     const maxNumber = Math.max(...this.heroes.map((h) => h.number));
     const newHero = { number: maxNumber + 1, name } satisfies Hero;
-    console.log(this.heroes);
     this.heroes.push(newHero);
-    console.log(this.heroes);
   }
 }
