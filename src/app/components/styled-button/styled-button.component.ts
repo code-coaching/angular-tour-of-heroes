@@ -9,6 +9,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './styled-button.component.css',
 })
 export class StyledButtonComponent {
-  @Output() click = new EventEmitter<void>();
+  @Output() onClick = new EventEmitter<void>();
   @Input() type: 'default' | 'primary' | 'negative' = 'default';
 }
