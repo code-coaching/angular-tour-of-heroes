@@ -36,6 +36,7 @@ export class HeroService {
     if (index !== -1) {
       this.heroes[index] = structuredClone(hero);
     }
+    this.saveHeroes();
   }
 
   deleteHero(hero: Hero) {
@@ -43,11 +44,24 @@ export class HeroService {
     if (this.selectedHero?.number === hero.number) {
       this.selectedHero = null;
     }
+    this.saveHeroes();
   }
 
   addHero(name: string) {
     const maxNumber = Math.max(...this.heroes.map((h) => h.number));
     const newHero = { number: maxNumber + 1, name } satisfies Hero;
     this.heroes.push(newHero);
+    this.saveHeroes();
+  }
+
+  private saveHeroes() {
+    localStorage.setItem('heroes', JSON.stringify(this.heroes));
+  }
+
+  loadHeroes() {
+    const heroes = localStorage.getItem('heroes');
+    if (heroes) {
+      this.heroes = JSON.parse(heroes);
+    }
   }
 }
