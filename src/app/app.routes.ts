@@ -34,6 +34,11 @@ export const routes: Routes = [
             (c) => c.HeroDetailsComponent,
           ),
       },
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./pages/login/login.component').then((c) => c.LoginComponent),
+      },
     ],
   },
 ];
