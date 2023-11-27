@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +14,9 @@ export class LoginComponent {
   email = '';
   password = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private authService: AuthService) {}
 
   login() {
-    this.http
-      .post<{ token: string }>('https://code-coaching.dev/api/token/login', {
-        email: this.email,
-        password: this.password,
-      })
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.authService.login(this.email, this.password);
   }
 }
