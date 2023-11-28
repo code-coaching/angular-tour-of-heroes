@@ -1,0 +1,12 @@
+.login-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 20rem;
+}
+.login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
