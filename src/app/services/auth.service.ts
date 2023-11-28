@@ -20,4 +20,12 @@ export class AuthService {
         }),
       );
   }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+  get isAuthenticated() {
+    return !!localStorage.getItem('token');
+  }
 }

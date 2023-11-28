@@ -8,6 +8,10 @@ button {
   font-family: Cambria, Georgia, serif;
 }
 
+body {
+  margin: 0;
+}
+
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;

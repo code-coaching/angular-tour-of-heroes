@@ -1,8 +1,23 @@
+<div class="header">
+  @if (authService.isAuthenticated) {
+    <app-styled-button (onClick)="authService.logout()">
+      Logout
+    </app-styled-button>
+  } @else {
+    <app-styled-button (onClick)="router.navigate(['login'])">
+      Login
+    </app-styled-button>
+  }
+</div>
 <div class="layout-container">
   <div class="title">Tour of Heroes</div>
   <div class="button-container">
-    <app-styled-button (click)="router.navigate([''])">Dashboard</app-styled-button>
-    <app-styled-button (click)="router.navigate(['heroes'])">Heroes</app-styled-button>
+    <app-styled-button (click)="router.navigate([''])">
+      Dashboard
+    </app-styled-button>
+    <app-styled-button (click)="router.navigate(['heroes'])">
+      Heroes
+    </app-styled-button>
   </div>
 
   <router-outlet></router-outlet>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -11,5 +12,8 @@ import { StyledButtonComponent } from '../../components/styled-button/styled-but
   styleUrl: './main-layout.component.css',
 })
 export class MainLayoutComponent {
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    public authService: AuthService,
+  ) {}
 }
