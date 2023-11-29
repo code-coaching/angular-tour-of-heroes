@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { authenticationGuard } from './guards/authentication.guard';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        canActivate: [authenticationGuard],
         loadComponent: () =>
           import('./pages/dashboard/dashboard.component').then(
             (c) => c.DashboardComponent,
@@ -15,6 +17,7 @@ export const routes: Routes = [
       },
       {
         path: 'heroes',
+        canActivate: [authenticationGuard],
         loadComponent: () =>
           import('./pages/hero-list/hero-list.component').then(
             (c) => c.HeroListComponent,
@@ -22,6 +25,7 @@ export const routes: Routes = [
       },
       {
         path: 'heroes/add',
+        canActivate: [authenticationGuard],
         loadComponent: () =>
           import('./pages/hero-add/hero-add.component').then(
             (c) => c.HeroAddComponent,
@@ -29,6 +33,7 @@ export const routes: Routes = [
       },
       {
         path: 'heroes/:id',
+        canActivate: [authenticationGuard],
         loadComponent: () =>
           import('./pages/hero-details/hero-details.component').then(
             (c) => c.HeroDetailsComponent,
