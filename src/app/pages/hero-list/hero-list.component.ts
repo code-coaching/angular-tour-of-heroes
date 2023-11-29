@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Hero } from '../../components/models';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
@@ -12,8 +12,15 @@ import { HeroService } from '../../services/hero.service';
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.css',
 })
-export class HeroListComponent {
-  constructor(public router: Router, public heroService: HeroService) {}
+export class HeroListComponent implements OnInit {
+  constructor(
+    public router: Router,
+    public heroService: HeroService,
+  ) {}
+
+  ngOnInit(): void {
+    this.heroService.loadHeroes();
+  }
 
   onClickHero(hero: Hero) {
     this.heroService.selectedHero = hero;

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { HeroService } from '../../services/hero.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +10,13 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {
-  constructor(public heroService: HeroService, public router: Router) {}
+export class DashboardComponent implements OnInit {
+  constructor(
+    public heroService: HeroService,
+    public router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    this.heroService.loadHeroes();
+  }
 }

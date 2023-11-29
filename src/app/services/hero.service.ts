@@ -57,7 +57,13 @@ export class HeroService {
           },
         })
         .subscribe((data) => {
-          console.log(data);
+          this.heroes = data.map((heroBackend) => {
+            const hero = {
+              number: heroBackend.id,
+              name: heroBackend.name,
+            } satisfies Hero;
+            return hero;
+          });
         });
     }
   }
