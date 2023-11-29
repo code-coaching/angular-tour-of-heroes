@@ -37,10 +37,15 @@ export class HeroService {
   }
 
   addHero(name: string) {
-    const maxNumber = Math.max(...this.heroes.map((h) => h.number));
-    const newHero = { number: maxNumber + 1, name } satisfies Hero;
-    this.heroes.push(newHero);
-    this.saveHeroes();
+    return this.http.post(
+      'https://code-coaching.dev/api/heroes',
+      { name },
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      },
+    );
   }
 
   private saveHeroes() {

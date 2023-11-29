@@ -1,8 +1,8 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { HeroService } from '../../services/hero.service';
 import { FormsModule } from '@angular/forms';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-hero-add',
@@ -20,7 +20,8 @@ export class HeroAddComponent {
   ) {}
 
   saveHero(name: string) {
-    this.heroService.addHero(name);
-    this.location.back();
+    this.heroService.addHero(name).subscribe(() => {
+      this.location.back();
+    });
   }
 }
