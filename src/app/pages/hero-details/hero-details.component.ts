@@ -2,6 +2,7 @@ import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 import { Hero } from '../../components/models';
 import { StyledButtonComponent } from '../../components/styled-button/styled-button.component';
 import { HeroService } from '../../services/hero.service';
@@ -14,7 +15,7 @@ import { HeroService } from '../../services/hero.service';
   styleUrl: './hero-details.component.css',
 })
 export class HeroDetailsComponent implements OnInit {
-  hero: undefined | Hero;
+  hero: null | Hero = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +27,17 @@ export class HeroDetailsComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const id = +params['id'];
       if (id) {
-        this.hero = this.heroService.findHero(id);
+        this.heroService
+          .findHero(id)
+          .pipe(
+            catchError((err) => {
+              this.hero = null;
+              return throwError(() => err);
+            }),
+          )
+          .subscribe((hero) => {
+            this.hero = hero;
+          });
       }
     });
   }

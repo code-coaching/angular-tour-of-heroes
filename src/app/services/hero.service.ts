@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 import { Hero, HeroBackend } from '../components/models';
 
 @Injectable({
@@ -16,9 +16,22 @@ export class HeroService {
     return this.heroes.slice(-4);
   }
 
-  findHero(number: number): Hero | undefined {
-    const matchingHero = this.heroes.find((h) => h.number === number);
-    return structuredClone(matchingHero);
+  findHero(number: number) {
+    return this.http
+      .get<HeroBackend>(`https://code-coaching.dev/api/heroes/${number}`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      })
+      .pipe(
+        map((heroBackend) => {
+          const hero = {
+            number: heroBackend.id,
+            name: heroBackend.name,
+          } satisfies Hero;
+          return hero;
+        }),
+      );
   }
 
   updateHero(hero: Hero) {
