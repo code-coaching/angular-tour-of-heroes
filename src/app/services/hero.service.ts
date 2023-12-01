@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 import { Hero, HeroBackend } from '../components/models';
 
 @Injectable({
@@ -29,11 +30,17 @@ export class HeroService {
   }
 
   deleteHero(hero: Hero) {
-    this.heroes = this.heroes.filter((h) => h.number !== hero.number);
-    if (this.selectedHero?.number === hero.number) {
-      this.selectedHero = null;
-    }
-    this.saveHeroes();
+    return this.http
+      .delete(`https://code-coaching.dev/api/heroes/${hero.number}`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      })
+      .pipe(
+        tap(() => {
+          this.selectedHero = null;
+        }),
+      );
   }
 
   addHero(name: string) {

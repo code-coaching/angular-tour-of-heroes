@@ -25,4 +25,12 @@ export class HeroListComponent implements OnInit {
   onClickHero(hero: Hero) {
     this.heroService.selectedHero = hero;
   }
+
+  onDeleteHero() {
+    if (this.heroService.selectedHero) {
+      this.heroService.deleteHero(this.heroService.selectedHero).subscribe(() => {
+        this.heroService.loadHeroes();
+      });
+    }
+  }
 }
