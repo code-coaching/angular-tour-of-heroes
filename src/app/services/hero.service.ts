@@ -22,11 +22,23 @@ export class HeroService {
   }
 
   updateHero(hero: Hero) {
-    const index = this.heroes.findIndex((h) => h.number === hero.number);
-    if (index !== -1) {
-      this.heroes[index] = structuredClone(hero);
-    }
-    this.saveHeroes();
+    return this.http
+      .patch(
+        `https://code-coaching.dev/api/heroes/${hero.number}`,
+        {
+          name: hero.name,
+        },
+        {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+        },
+      )
+      .pipe(
+        tap(() => {
+          this.selectedHero = null;
+        }),
+      );
   }
 
   deleteHero(hero: Hero) {
@@ -53,10 +65,6 @@ export class HeroService {
         },
       },
     );
-  }
-
-  private saveHeroes() {
-    localStorage.setItem('heroes', JSON.stringify(this.heroes));
   }
 
   loadHeroes() {
