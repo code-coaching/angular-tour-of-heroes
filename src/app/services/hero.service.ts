@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Hero, HeroBackend } from '../components/models';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class HeroService {
 
   findHero(number: number) {
     return this.http
-      .get<HeroBackend>(`https://code-coaching.dev/api/heroes/${number}`, {
+      .get<HeroBackend>(`/heroes/${number}`, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
@@ -37,7 +37,7 @@ export class HeroService {
   updateHero(hero: Hero) {
     return this.http
       .patch(
-        `https://code-coaching.dev/api/heroes/${hero.number}`,
+        `/heroes/${hero.number}`,
         {
           name: hero.name,
         },
@@ -56,7 +56,7 @@ export class HeroService {
 
   deleteHero(hero: Hero) {
     return this.http
-      .delete(`https://code-coaching.dev/api/heroes/${hero.number}`, {
+      .delete(`/heroes/${hero.number}`, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
@@ -70,7 +70,7 @@ export class HeroService {
 
   addHero(name: string) {
     return this.http.post(
-      'https://code-coaching.dev/api/heroes',
+      '/heroes',
       { name },
       {
         headers: {
@@ -84,7 +84,7 @@ export class HeroService {
     const token = localStorage.getItem('token');
     if (token) {
       this.http
-        .get<Array<HeroBackend>>('https://code-coaching.dev/api/heroes', {
+        .get<Array<HeroBackend>>('/heroes', {
           headers: {
             Authorization: 'Bearer ' + token,
           },

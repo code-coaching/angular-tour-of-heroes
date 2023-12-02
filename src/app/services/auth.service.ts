@@ -10,7 +10,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<{ token: string }>('https://code-coaching.dev/api/token/login', {
+      .post<{ token: string }>('/token/login', {
         email: email,
         password: password,
       })
