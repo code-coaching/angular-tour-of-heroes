@@ -17,36 +17,22 @@ export class HeroService {
   }
 
   findHero(number: number) {
-    return this.http
-      .get<HeroBackend>(`/heroes/${number}`, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      })
-      .pipe(
-        map((heroBackend) => {
-          const hero = {
-            number: heroBackend.id,
-            name: heroBackend.name,
-          } satisfies Hero;
-          return hero;
-        }),
-      );
+    return this.http.get<HeroBackend>(`/heroes/${number}`).pipe(
+      map((heroBackend) => {
+        const hero = {
+          number: heroBackend.id,
+          name: heroBackend.name,
+        } satisfies Hero;
+        return hero;
+      }),
+    );
   }
 
   updateHero(hero: Hero) {
     return this.http
-      .patch(
-        `/heroes/${hero.number}`,
-        {
-          name: hero.name,
-        },
-        {
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
-          },
-        },
-      )
+      .patch(`/heroes/${hero.number}`, {
+        name: hero.name,
+      })
       .pipe(
         tap(() => {
           this.selectedHero = null;
@@ -55,49 +41,29 @@ export class HeroService {
   }
 
   deleteHero(hero: Hero) {
-    return this.http
-      .delete(`/heroes/${hero.number}`, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      })
-      .pipe(
-        tap(() => {
-          this.selectedHero = null;
-        }),
-      );
+    return this.http.delete(`/heroes/${hero.number}`).pipe(
+      tap(() => {
+        this.selectedHero = null;
+      }),
+    );
   }
 
   addHero(name: string) {
-    return this.http.post(
-      '/heroes',
-      { name },
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      },
-    );
+    return this.http.post('/heroes', { name });
   }
 
   loadHeroes() {
     const token = localStorage.getItem('token');
     if (token) {
-      this.http
-        .get<Array<HeroBackend>>('/heroes', {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
-        })
-        .subscribe((data) => {
-          this.heroes = data.map((heroBackend) => {
-            const hero = {
-              number: heroBackend.id,
-              name: heroBackend.name,
-            } satisfies Hero;
-            return hero;
-          });
+      this.http.get<Array<HeroBackend>>('/heroes').subscribe((data) => {
+        this.heroes = data.map((heroBackend) => {
+          const hero = {
+            number: heroBackend.id,
+            name: heroBackend.name,
+          } satisfies Hero;
+          return hero;
         });
+      });
     }
   }
 }
